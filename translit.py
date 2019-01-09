@@ -1,8 +1,6 @@
-from transliterate import translit 
+from transliterate import translit
 
-orig = "Как тебя зовут?"
+orig = input("Type: ")
+#orig = "Как тебя зовут?"
 
 print(translit(orig, "ru", reversed=True))
-
-
-

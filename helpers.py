@@ -1,13 +1,18 @@
 from transliterate import translit
 
 
-def send_response(resp, conn, match):
+def send_response(resp, conn, match, text=None):
     if match:
         conn.sendall(resp.encode())
         conn.close()
+        if text:
+            tr = translit(text, "ru", reversed=True)
+            print(tr)
 
 
-
-orig = input("")
-
-tr = translit(orig, "ru", reversed=True)
+"""
+def trans(send_response):
+    #orig = input("Type: ")
+    tr = translit(text, "ru", reversed=True)
+    return tr
+"""

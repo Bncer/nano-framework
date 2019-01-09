@@ -21,5 +21,4 @@ while True:
     elif 'translit' in request_string:
         translit_handler(request_string, client_connection)
     else:
-        pass
-
+        print("Ne to")

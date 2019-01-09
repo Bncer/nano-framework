@@ -1,29 +1,29 @@
 from decorators import address
 from helpers import send_response
 from renderer import render
-import re
+from pymy import db_connect
 
 
 @address('about')
-def about_handler(request, conn, match=True):
+def about_handler(request, conn, match=True, data={}):
     template = 'about.html'
-    content = render(template)
+    abc = render(template, {'this_is_variable': 'My site' })
     resp = """\
     HTTP/1.1 200 OK
-    
+
     {0}
-    """.format(content)
+    """.format(abc)
 
     send_response(resp, conn, match)
 
 
 @address('contacts')
-def contact_handler(request, conn, match=True):
+def contact_handler(request, conn, match=True, data={}):
     template = 'contacts.html'
-    content = render(template)
+    content = render(template, {'marvel_var': db_connect()})
     resp = """\
     HTTP/1.1 200 OK
-    
+
     {0}
     """.format(content)
 
@@ -33,12 +33,11 @@ def contact_handler(request, conn, match=True):
 @address('translit')
 def translit_handler(request, conn, match=True):
     template = 'translit.html'
-    content = render(template)
+    abc = render(template, {'tran_var': "dsfsdf" })
     resp = """\
     HTTP/1.1 200 OK
-    
+
     {0}
-    """.format(content)
+    """.format(abc)
 
     send_response(resp, conn, match)
-
